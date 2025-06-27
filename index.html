@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meowdium Utility Suite</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🐾 Meowdium Utility Suite</h1>
+    <nav>
+      <button onclick="showTab('meme-generator')">Meme Generator</button>
+      <button onclick="showTab('cat-overlay')">Cat Face Overlay</button>
+      <button onclick="showTab('dex-aggregator')">Mini DEX Aggregator</button>
+    </nav>
+    <div id="meme-generator" class="tab-content">
+      <h2>Meme Generator</h2>
+      <input type="file" id="memeImage" accept="image/*" />
+      <input type="text" id="topText" placeholder="Top Text" />
+      <input type="text" id="bottomText" placeholder="Bottom Text" />
+      <button onclick="generateMeme()">Generate Meme</button>
+      <canvas id="memeCanvas"></canvas>
+    </div>
+    <div id="cat-overlay" class="tab-content">
+      <h2>Cat Face Overlay</h2>
+      <input type="file" id="uploadImage" accept="image/*" />
+      <button onclick="addCatOverlay()">Add Cat Face</button>
+      <canvas id="overlayCanvas"></canvas>
+    </div>
+    <div id="dex-aggregator" class="tab-content">
+      <h2>Mini DEX Aggregator</h2>
+      <input type="text" id="tokenAddress" placeholder="Enter Token Address" />
+      <button onclick="fetchTokenData()">Fetch Token Info</button>
+      <div id="tokenInfo"></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
