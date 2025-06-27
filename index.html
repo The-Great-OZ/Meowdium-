@@ -4,37 +4,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Meowdium Utility Suite</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div class="container">
-    <h1>🐾 Meowdium Utility Suite</h1>
-    <nav>
-      <button onclick="showTab('meme-generator')">Meme Generator</button>
-      <button onclick="showTab('cat-overlay')">Cat Face Overlay</button>
-      <button onclick="showTab('dex-aggregator')">Mini DEX Aggregator</button>
-    </nav>
-    <div id="meme-generator" class="tab-content">
-      <h2>Meme Generator</h2>
-      <input type="file" id="memeImage" accept="image/*" />
-      <input type="text" id="topText" placeholder="Top Text" />
-      <input type="text" id="bottomText" placeholder="Bottom Text" />
-      <button onclick="generateMeme()">Generate Meme</button>
-      <canvas id="memeCanvas"></canvas>
-    </div>
-    <div id="cat-overlay" class="tab-content">
-      <h2>Cat Face Overlay</h2>
-      <input type="file" id="uploadImage" accept="image/*" />
-      <button onclick="addCatOverlay()">Add Cat Face</button>
-      <canvas id="overlayCanvas"></canvas>
-    </div>
-    <div id="dex-aggregator" class="tab-content">
-      <h2>Mini DEX Aggregator</h2>
-      <input type="text" id="tokenAddress" placeholder="Enter Token Address" />
-      <button onclick="fetchTokenData()">Fetch Token Info</button>
-      <div id="tokenInfo"></div>
-    </div>
+  <h1>Meowdium Utility Suite</h1>
+
+  <div class="tabs">
+    <button class="tab-btn" onclick="showTab('meme-gen')">Meme Generator</button>
+    <button class="tab-btn" onclick="showTab('catify')">Catify Me</button>
+    <button class="tab-btn" onclick="showTab('dex')">Mini DEX Aggregator</button>
   </div>
+
+  <div id="meme-gen" class="tab-content">
+    <h2>Meme Generator</h2>
+    <input type="text" id="topText" placeholder="Top Text">
+    <input type="text" id="bottomText" placeholder="Bottom Text">
+    <input type="file" id="memeImageInput" accept="image/*"/>
+    <canvas id="memeCanvas" width="400" height="400"></canvas>
+    <button onclick="generateMeme()">Generate Meme</button>
+    <a id="downloadMeme" download="meme.png">Download Meme</a>
+  </div>
+
+  <div id="catify" class="tab-content" style="display:none;">
+    <h2>Catify Me</h2>
+    <input type="file" id="catifyInput" accept="image/*"/>
+    <canvas id="catifyCanvas" width="400" height="400"></canvas>
+    <button onclick="catifyImage()">Overlay Cat Face</button>
+  </div>
+
+  <div id="dex" class="tab-content" style="display:none;">
+    <h2>Mini DEX Aggregator</h2>
+    <p>Solana Token Address:</p>
+    <input type="text" id="tokenAddress" placeholder="Enter Token Mint Address">
+    <button onclick="fetchTokenData()">Get Token Info</button>
+    <div id="tokenData"></div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
