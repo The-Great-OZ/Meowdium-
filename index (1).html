@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meowdium — Powered by CatCoin</title>
+    <meta name="description" content="Create purrfect memes, catify your photos, and track Solana tokens with Meowdium - the ultimate cat-themed crypto utility platform powered by CatCoin.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">🐱</div>
+                <h1>Meowdium</h1>
+            </div>
+            <div class="nav-tabs">
+                <button class="tab-btn active" data-tab="meme">Meme Generator</button>
+                <button class="tab-btn" data-tab="catify">Catify Me</button>
+                <button class="tab-btn" data-tab="dex">DEX Aggregator</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Meme Generator Section -->
+        <section id="meme-generator" class="tab-content active">
+            <div class="content-card">
+                <div class="section-header">
+                    <h2>🎭 Meme Generator</h2>
+                    <p>Create purrfect memes that will make the whole community meow with laughter!</p>
+                </div>
+                
+                <div class="section-grid">
+                    <div class="controls-column">
+                        <div class="upload-zone" id="meme-upload">
+                            <div class="upload-icon">📸</div>
+                            <p>Click to upload or drag & drop</p>
+                            <input type="file" id="meme-file" accept="image/*" hidden>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="top-text">Top Text</label>
+                            <input type="text" id="top-text" placeholder="Enter top text...">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="bottom-text">Bottom Text</label>
+                            <input type="text" id="bottom-text" placeholder="Enter bottom text...">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="font-select">Font Style</label>
+                            <select id="font-select">
+                                <option value="Impact">Impact (Classic Meme)</option>
+                                <option value="Arial">Arial (Clean)</option>
+                                <option value="Comic Sans MS">Comic Sans (Fun)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="button-group">
+                            <button class="btn-primary" id="generate-meme">🎨 Generate Meme</button>
+                            <button class="btn-secondary" id="download-meme">📱 Download</button>
+                        </div>
+                    </div>
+                    
+                    <div class="preview-column">
+                        <h3>Preview</h3>
+                        <div class="preview-area">
+                            <canvas id="meme-canvas" style="display: none;"></canvas>
+                            <div id="meme-placeholder" class="placeholder">Upload an image to preview</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Catify Me Section -->
+        <section id="catify-me" class="tab-content">
+            <div class="content-card">
+                <div class="section-header">
+                    <h2>😸 Catify Me</h2>
+                    <p>Transform your photos with adorable cat overlays! Become part of the CatCoin family!</p>
+                </div>
+                
+                <div class="section-grid">
+                    <div class="controls-column">
+                        <div class="upload-zone" id="catify-upload">
+                            <div class="upload-icon">🤳</div>
+                            <p>Upload your selfie (Max 5MB)</p>
+                            <input type="file" id="catify-file" accept="image/jpeg,image/png" hidden>
+                        </div>
+                        
+                        <div class="overlay-selection">
+                            <label>Choose Your Cat Style</label>
+                            <div class="overlay-grid">
+                                <div class="overlay-option active" data-overlay="cat1">
+                                    <div class="overlay-preview orange">🐱</div>
+                                    <span>Orange</span>
+                                </div>
+                                <div class="overlay-option" data-overlay="cat2">
+                                    <div class="overlay-preview gray">🐈</div>
+                                    <span>Gray</span>
+                                </div>
+                                <div class="overlay-option" data-overlay="cat3">
+                                    <div class="overlay-preview black">🐈‍⬛</div>
+                                    <span>Black</span>
+                                </div>
+                                <div class="overlay-option" data-overlay="cat4">
+                                    <div class="overlay-preview happy">😸</div>
+                                    <span>Happy</span>
+                                </div>
+                                <div class="overlay-option" data-overlay="cat5">
+                                    <div class="overlay-preview love">😻</div>
+                                    <span>Love</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="overlay-controls">
+                            <h4>Overlay Controls</h4>
+                            <div class="control-grid">
+                                <button class="control-btn" data-action="up">⬆️ Up</button>
+                                <button class="control-btn" data-action="down">⬇️ Down</button>
+                                <button class="control-btn" data-action="left">⬅️ Left</button>
+                                <button class="control-btn" data-action="right">➡️ Right</button>
+                                <button class="control-btn" data-action="rotate">🔄 Rotate</button>
+                                <button class="control-btn" data-action="bigger">🔍 Bigger</button>
+                                <button class="control-btn" data-action="smaller">🔍 Smaller</button>
+                                <button class="control-btn" data-action="reset">🔄 Reset</button>
+                            </div>
+                        </div>
+                        
+                        <button class="btn-primary full-width" id="download-catified">😸 Download Catified Image</button>
+                    </div>
+                    
+                    <div class="preview-column">
+                        <h3>Live Preview</h3>
+                        <div class="preview-area" id="catify-preview">
+                            <div class="placeholder">Upload a photo to preview</div>
+                        </div>
+                        <p class="help-text">Use controls to position and resize the cat overlay</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEX Aggregator Section -->
+        <section id="dex-aggregator" class="tab-content">
+            <div class="content-card">
+                <div class="section-header">
+                    <h2>📊 DEX Aggregator</h2>
+                    <p>Track your favorite tokens and discover the best trading opportunities across Solana DEXs!</p>
+                </div>
+                
+                <div class="section-grid">
+                    <div class="controls-column">
+                        <div class="input-group">
+                            <label for="token-address">Solana Token Address</label>
+                            <input type="text" id="token-address" placeholder="Enter token contract address...">
+                            <button class="btn-primary full-width" id="fetch-token">🔍 Fetch Token Info</button>
+                        </div>
+                        
+                        <div class="popular-tokens">
+                            <label>Popular Tokens</label>
+                            <div class="token-list">
+                                <button class="token-item" data-address="So11111111111111111111111111111111111111112">
+                                    <div class="token-icon purple-gradient"></div>
+                                    <div class="token-info">
+                                        <strong>Solana</strong>
+                                        <span>SOL</span>
+                                    </div>
+                                </button>
+                                <button class="token-item" data-address="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v">
+                                    <div class="token-icon blue">USD</div>
+                                    <div class="token-info">
+                                        <strong>USD Coin</strong>
+                                        <span>USDC</span>
+                                    </div>
+                                </button>
+                                <button class="token-item" data-address="DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263">
+                                    <div class="token-icon orange">🐕</div>
+                                    <div class="token-info">
+                                        <strong>Bonk</strong>
+                                        <span>BONK</span>
+                                    </div>
+                                </button>
+                                <div class="catcoin-featured">
+                                    <div class="token-icon catcoin">🐱</div>
+                                    <div class="token-info">
+                                        <strong>CatCoin</strong>
+                                        <span>Coming Soon!</span>
+                                    </div>
+                                    <span class="featured-badge">Featured</span>
+                                </div>
+                            </div>
+                            <div class="info-note">
+                                <strong>Universal Token Lookup:</strong> Enter any valid Solana token address above to fetch real-time data from DexScreener and other sources.
+                            </div>
+                        </div>
+                        
+                        <div class="wallet-section">
+                            <h4>🔐 Wallet Connection</h4>
+                            <p>Connect your Solana wallet to enable trading features</p>
+                            <button class="btn-wallet" id="connect-wallet">Connect Phantom Wallet</button>
+                        </div>
+                    </div>
+                    
+                    <div class="preview-column">
+                        <h3>Token Information</h3>
+                        <div id="token-info" class="token-display">
+                            <div class="placeholder">
+                                <div class="placeholder-icon">🔍</div>
+                                <p>Enter a token address above to view detailed information</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-icon">🐱</div>
+                    <p>Powered by CatCoin Community</p>
+                </div>
+                <p>&copy; 2024 Meowdium. Built with ❤️ for the feline crypto community.</p>
+                <p class="disclaimer">Not financial advice. DYOR before trading. 🐾</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
